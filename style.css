@@ -8,162 +8,139 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-/* --- CABEÇALHO --- */
-.cabecalho-itens {
-  position: relative;
-  z-index: 10; /* Garante que o header fique sobre o banner */
+header {
   background-color: #424e61;
   color: white;
   width: 100%;
   padding: 20px;
+}
+
+.cabecalho-itens {
+  max-width: 1980px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .cabecalho_imagem {
   width: 6%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .titulo_site {
+  padding: 50px;
+  text-align: center;
+  width: 50%;
   font-size: 30px;
 }
 
 .sociais {
   display: flex;
+  justify-content: flex-end;
+  width: 25%;
+  padding-right: 30px;
 }
 
-.sociais-icone {
-    width: 32px;
-    margin: 0 8px;
-    transition: transform 0.3s ease;
-}
-.sociais-icone:hover {
-    transform: scale(1.15);
-}
-
-/* --- ANIMAÇÃO DE ZOOM SUAVE PARA O BANNER (CORREÇÃO DEFINITIVA) --- */
-@keyframes zoomSuave {
-  from {
-    transform: scale(1.05);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-#banner-parallax {
-  min-height: 60vh;
-  position: relative; /* Essencial para o posicionamento do ::before */
-  overflow: hidden;  /* Esconde as partes da imagem que "vazam" durante o zoom */
-  display: grid;     /* Usaremos grid para centralizar conteúdo futuro se necessário */
-  place-items: center;
-  color: white;
-}
-
-#banner-parallax::before {
-  content: '';
-  position: absolute;
-  inset: 0; /* Atalho para top: 0; right: 0; bottom: 0; left: 0; */
-  z-index: -1; /* Envia para trás APENAS DENTRO DO BANNER */
-
-  background-image: url('paragrafo_1_banner.jpg');
-  background-size: cover;
-  background-position: center;
-
-  animation: zoomSuave 10s ease-out forwards;
-}
-
-/* --- SEÇÃO DE ESTUDANTES --- */
-.estudante {
-  background-color: #fff200;
-  padding: 50px 24px;
-  text-align: center;
+.banner1 {
+  display: flex;
+  justify-content: center;
 }
 
 .estudante_titulo {
-  padding-bottom: 50px;
-  font-size: 32px;
-  color: #424e61;
-}
-
-.estudantes_todos {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.estudante-div {
+  padding: 50px;
   text-align: center;
-  padding: 24px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
 }
 
-.estudante-div:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.estudante-div.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+.estudante-nome {
+  text-align: center;
 }
 
 .estudante-imagem {
   width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid #424e61;
-  margin-bottom: 15px;
-}
-
-.estudante-nome {
-  margin-bottom: 15px;
-  font-size: 20px;
-  color: #333;
 }
 
 .estudante-icone {
   width: 38px;
-  padding: 4px;
-  transition: transform 0.3s ease;
-}
-.estudante-icone:hover {
-    transform: scale(1.2);
+  padding: 4px 8px;
 }
 
-/* --- RODAPÉ --- */
-.escola {
-  background-image: linear-gradient(#40A2E3, #297bb3);
-  color: white;
-  padding: 40px 24px;
+.estudante {
+  background-color: #fff200;
+  padding: 24px 0;
   text-align: center;
 }
 
-.escola-título {
-  padding: 20px 0;
+.estudantes_todos {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.escola {
+  background-image: linear-gradient(#40A2E3, #297bb3);
+  color: white;
+  padding: 24px 0;
+  text-align: center;
+}
+
+.escola-titulo {
+  padding: 50px;
+  text-align: center;
 }
 
 .logo_rodape {
   height: 80px;
-  padding-bottom: 20px;
+  padding: 12px 0;
 }
 
 .link {
   color: #ffffff;
   text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
 }
+
+
+/*******************************************************
+* ANIMAÇÕES E EFEITOS (CSS + JAVASCRIPT)
+*******************************************************/
+
+/* --- Efeitos de Hover Simples (melhor com CSS) --- */
+.sociais img {
+  transition: transform 0.3s ease;
+  margin: 0 8px;
+}
+
+.sociais img:hover,
+.estudante-icone:hover {
+  transform: scale(1.15);
+}
+
 .link:hover {
-  color: #fff200;
+    color: #fff200;
+}
+
+/* --- Animação de Entrada dos Cards --- */
+
+/* Estado inicial: os cards começam invisíveis e um pouco para baixo */
+.estudante-div {
+  text-align: center;
+  padding: 24px;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Estado final: classe que o JavaScript adiciona quando o elemento está visível */
+.estudante-div.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Efeito de hover para o card (continua sendo melhor em CSS) */
+.estudante-div:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
