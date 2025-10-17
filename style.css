@@ -4,145 +4,65 @@
   box-sizing: border-box;
 }
 
+html, body {
+  position: relative;
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Poppins", sans-serif;
 }
 
 /* --- CABEÇALHO --- */
-header {
+.cabecalho-itens {
+  position: relative;
+  z-index: 10; /* Garante que o header fique sobre o banner */
   background-color: #424e61;
   color: white;
   width: 100%;
   padding: 20px;
-}
-
-.cabecalho-itens {
   max-width: 1980px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Melhor para alinhamento */
+  justify-content: space-between;
+}
+/* ... resto do seu CSS do cabeçalho ... */
+
+/* --- NOVA ANIMAÇÃO DE ZOOM SUAVE PARA O BANNER --- */
+@keyframes zoomSuave {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
-.cabecalho_imagem {
-  width: 6%;
-}
-
-.titulo_site {
-  font-size: 30px;
-}
-
-.sociais-icone {
-    width: 32px; /* Tamanho fixo para ícones */
-    margin: 0 8px; /* Espaçamento entre ícones */
-    transition: transform 0.3s ease;
-}
-.sociais-icone:hover {
-    transform: scale(1.15);
-}
-
-/* --- BANNER COM EFEITO PARALLAX --- */
 #banner-parallax {
-  background-image: url('paragrafo_1_banner.jpg');
   min-height: 60vh;
+  position: relative; /* Necessário para o posicionamento do ::before */
+  overflow: hidden;
+  background-color: #333; /* Cor de fundo caso a imagem demore a carregar */
+}
+
+#banner-parallax::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('paragrafo_1_banner.jpg');
   background-size: cover;
   background-position: center;
-  /* A posição do fundo será controlada pelo JavaScript */
+  animation: zoomSuave 10s ease-out forwards;
 }
 
-
-/* --- SEÇÃO DE ESTUDANTES --- */
+/* --- SEÇÃO DE ESTUDANTES (sem alterações) --- */
 .estudante {
   background-color: #fff200;
   padding: 50px 24px;
   text-align: center;
 }
-
-.estudante_titulo {
-  padding-bottom: 50px;
-  font-size: 32px;
-}
-
-.estudantes_todos {
-  display: flex;
-  justify-content: center; /* Centraliza os cards */
-  gap: 30px; /* Espaçamento entre os cards */
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Estado inicial dos cards (para animação do JS) */
-.estudante-div {
-  text-align: center;
-  padding: 24px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-
-  /* Começam invisíveis */
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
-}
-
-/* Efeito de hover nos cards */
-.estudante-div:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-/* Classe que o JavaScript adiciona para tornar o card visível */
-.estudante-div.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.estudante-imagem {
-  width: 120px;
-  border-radius: 50%; /* Deixa a imagem redonda */
-  border: 4px solid #424e61;
-  margin-bottom: 15px;
-}
-
-.estudante-nome {
-  margin-bottom: 15px;
-  font-size: 20px;
-}
-
-.estudante-icone {
-  width: 38px;
-  padding: 4px;
-  transition: transform 0.3s ease;
-}
-.estudante-icone:hover {
-    transform: scale(1.2);
-}
-
-
-/* --- RODAPÉ --- */
-.escola {
-  background-image: linear-gradient(#40A2E3, #297bb3);
-  color: white;
-  padding: 40px 24px;
-  text-align: center;
-}
-
-.escola-titulo {
-  padding: 20px 0;
-}
-
-.logo_rodape {
-  height: 80px;
-  padding-bottom: 20px;
-}
-
-.link {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-.link:hover {
-  color: #fff200;
-}
+/* ... resto do CSS dos estudantes e rodapé ... */
