@@ -8,6 +8,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+/* --- CABEÇALHO --- */
 header {
   background-color: #424e61;
   color: white;
@@ -20,127 +21,128 @@ header {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between; /* Melhor para alinhamento */
 }
 
 .cabecalho_imagem {
   width: 6%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
 }
 
 .titulo_site {
-  padding: 50px;
-  text-align: center;
-  width: 50%;
   font-size: 30px;
 }
 
-.sociais {
-  display: flex;
-  justify-content: flex-end;
-  width: 25%;
-  padding-right: 30px;
+.sociais-icone {
+    width: 32px; /* Tamanho fixo para ícones */
+    margin: 0 8px; /* Espaçamento entre ícones */
+    transition: transform 0.3s ease;
+}
+.sociais-icone:hover {
+    transform: scale(1.15);
 }
 
-.banner1 {
-  display: flex;
-  justify-content: center;
+/* --- BANNER COM EFEITO PARALLAX --- */
+#banner-parallax {
+  background-image: url('paragrafo_1_banner.jpg');
+  min-height: 60vh;
+  background-size: cover;
+  background-position: center;
+  /* A posição do fundo será controlada pelo JavaScript */
+}
+
+
+/* --- SEÇÃO DE ESTUDANTES --- */
+.estudante {
+  background-color: #fff200;
+  padding: 50px 24px;
+  text-align: center;
 }
 
 .estudante_titulo {
-  padding: 50px;
-  text-align: center;
-}
-
-.estudante-nome {
-  text-align: center;
-}
-
-.estudante-imagem {
-  width: 120px;
-}
-
-.estudante-icone {
-  width: 38px;
-  padding: 4px 8px;
-}
-
-.estudante {
-  background-color: #fff200;
-  padding: 24px 0;
-  text-align: center;
+  padding-bottom: 50px;
+  font-size: 32px;
 }
 
 .estudantes_todos {
   display: flex;
-  justify-content: space-around;
+  justify-content: center; /* Centraliza os cards */
+  gap: 30px; /* Espaçamento entre os cards */
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.escola {
-  background-image: linear-gradient(#40A2E3, #297bb3);
-  color: white;
-  padding: 24px 0;
-  text-align: center;
-}
-
-.escola-titulo {
-  padding: 50px;
-  text-align: center;
-}
-
-.logo_rodape {
-  height: 80px;
-  padding: 12px 0;
-}
-
-.link {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-
-/*******************************************************
-* ANIMAÇÕES E EFEITOS (CSS + JAVASCRIPT)
-*******************************************************/
-
-/* --- Efeitos de Hover Simples (melhor com CSS) --- */
-.sociais img {
-  transition: transform 0.3s ease;
-  margin: 0 8px;
-}
-
-.sociais img:hover,
-.estudante-icone:hover {
-  transform: scale(1.15);
-}
-
-.link:hover {
-    color: #fff200;
-}
-
-/* --- Animação de Entrada dos Cards --- */
-
-/* Estado inicial: os cards começam invisíveis e um pouco para baixo */
+/* Estado inicial dos cards (para animação do JS) */
 .estudante-div {
   text-align: center;
   padding: 24px;
   border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  /* Começam invisíveis */
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
 }
 
-/* Estado final: classe que o JavaScript adiciona quando o elemento está visível */
+/* Efeito de hover nos cards */
+.estudante-div:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Classe que o JavaScript adiciona para tornar o card visível */
 .estudante-div.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Efeito de hover para o card (continua sendo melhor em CSS) */
-.estudante-div:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.estudante-imagem {
+  width: 120px;
+  border-radius: 50%; /* Deixa a imagem redonda */
+  border: 4px solid #424e61;
+  margin-bottom: 15px;
+}
+
+.estudante-nome {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.estudante-icone {
+  width: 38px;
+  padding: 4px;
+  transition: transform 0.3s ease;
+}
+.estudante-icone:hover {
+    transform: scale(1.2);
+}
+
+
+/* --- RODAPÉ --- */
+.escola {
+  background-image: linear-gradient(#40A2E3, #297bb3);
+  color: white;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.escola-titulo {
+  padding: 20px 0;
+}
+
+.logo_rodape {
+  height: 80px;
+  padding-bottom: 20px;
+}
+
+.link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+.link:hover {
+  color: #fff200;
 }

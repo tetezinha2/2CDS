@@ -1,29 +1,36 @@
-// Aguarda o documento HTML ser completamente carregado para executar o script
+// Aguarda todo o conteúdo da página ser carregado para executar o script
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Seleciona todos os elementos que queremos animar (todos os cards de estudante)
+  // --- LÓGICA PARA O EFEITO PARALLAX NO BANNER ---
+  const banner = document.getElementById('banner-parallax');
+  
+  if (banner) { // Verifica se o banner existe para não dar erro
+    window.addEventListener('scroll', () => {
+      let scrollPos = window.pageYOffset;
+      // O '0.5' controla a velocidade do efeito. Ajuste conforme sua preferência.
+      banner.style.backgroundPositionY = scrollPos * 0.5 + 'px';
+    });
+  }
+
+
+  // --- LÓGICA PARA ANIMAR ELEMENTOS AO APARECEREM NA TELA ---
   const elementosParaAnimar = document.querySelectorAll('.estudante-div');
 
-  // Configurações do Intersection Observer
-  // rootMargin: uma "margem" extra para o viewport. "-100px" significa
-  // que a animação vai começar quando o elemento estiver a 100px de entrar na tela.
+  // Configurações do "observador"
   const observerOptions = {
-    root: null, // null significa que o viewport do navegador é a área de observação
-    rootMargin: '0px 0px -100px 0px',
-    threshold: 0.1 // A animação dispara quando 10% do elemento estiver visível
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.25 // A animação dispara quando 25% do elemento estiver visível
   };
 
-  // Cria o "observador" que executa uma função quando um elemento entra na tela
   const observer = new IntersectionObserver((entries, observer) => {
-    // 'entries' é uma lista de todos os elementos que estão sendo observados
     entries.forEach(entry => {
-      // 'isIntersecting' é 'true' se o elemento cruzou o limite e está na tela
+      // Se o elemento está na tela (intersecting)
       if (entry.isIntersecting) {
-        // Adiciona a classe '.is-visible' para ativar a animação definida no CSS
+        // Adiciona a classe '.is-visible' para ativar a animação do CSS
         entry.target.classList.add('is-visible');
         
-        // Opcional: Depois que a animação ocorreu uma vez, paramos de "observar" o elemento
-        // para economizar recursos do navegador.
+        // Para de "observar" o elemento depois que a animação ocorreu uma vez
         observer.unobserve(entry.target);
       }
     });
