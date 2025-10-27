@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- LÓGICA PARA O EFEITO MÁQUINA DE ESCREVER ---
 
   const tituloAnimado = document.querySelector('#titulo-animado');
-  const textoOriginal = "Alunos em destaque 2025";
+  const textoOriginal = "os truqueiros 2025";
 
   // Função que "digita" o texto letra por letra
   function efeitoMaquinaEscrever(elemento, texto) {
