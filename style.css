@@ -220,56 +220,76 @@ a img {
 
 /* ================================================= */
 /* 4. SEÇÃO DESCRIÇÃO DA ESCOLA (LEIA MAIS) */
+/* (ESTILOS VISUAIS MELHORADOS) */
 /* ================================================= */
 .descricao-escola {
-    padding: 50px 24px;
-    max-width: 1000px;
-    margin: 0 auto;
+    padding: 60px 24px; /* Mais padding vertical */
+    max-width: 900px; /* Levemente mais estreito para focar o texto */
+    margin: 40px auto; /* Mais espaçamento fora */
     text-align: center;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 40px;
+    background: linear-gradient(145deg, #f9f9f9, #ffffff); /* Fundo sutil */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra mais profunda */
+    border: 1px solid #e0e0e0;
 }
 
 .descricao-escola h2 {
-    color: #424e61;
-    font-size: 28px;
-    margin-bottom: 25px;
-    font-weight: 700;
+    color: #0d47a1; /* Azul forte, combinando com o hover do botão */
+    font-size: 34px; /* Título maior */
+    margin-bottom: 30px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .descricao-escola p {
     text-align: justify;
-    margin: 10px 0;
-    color: #555;
+    margin: 15px 0;
+    color: #444;
+    font-size: 17px;
+    line-height: 1.8;
 }
 
-/* Oculta o conteúdo extra inicialmente (funcionalidade JS) */
+/* Destaque para os "três pontos" */
+#tresPontos {
+    font-weight: bold;
+    color: #1a73e8;
+}
+
+/* A CLASSE CRUCIAL: Agora com a altura zero para permitir transição (se o JS for ajustado) */
 .descricao-oculta {
+    /* Manter display: none; no JS, mas podemos usar isso para animação de altura */
+    /* Por enquanto, mantemos a base visual: */
     display: none; 
 }
 
-/* Estilo do Botão "Leia Mais" / "Leia Menos" */
+/* Estilo do Botão "Leia Mais" / "Leia Menos" com Destaque */
 #btnLeiaMais {
     background-color: #1a73e8; 
-    color: white;
-    padding: 12px 30px;
+    color: #fff;
+    padding: 14px 40px; /* Botão maior */
     border: none;
-    border-radius: 25px; /* Botão mais arredondado */
+    border-radius: 30px; /* Botão bem arredondado (pílula) */
     cursor: pointer;
-    font-weight: 600;
-    margin-top: 25px;
-    transition: background-color 0.3s ease, transform 0.1s;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.4); /* Sombra azul vibrante */
+    transition: all 0.3s ease;
 }
 
 #btnLeiaMais:hover {
-    background-color: #0d47a1;
+    background-color: #0d47a1; /* Azul mais escuro no hover */
+    box-shadow: 0 6px 20px rgba(13, 71, 161, 0.6); /* Sombra mais intensa */
+    transform: translateY(-2px); /* Efeito de elevação sutil */
 }
 
 #btnLeiaMais:active {
     transform: scale(0.98);
 }
+
 
 /* ================================================= */
 /* 5. SEÇÃO DOS ESTUDANTES */
