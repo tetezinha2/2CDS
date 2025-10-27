@@ -34,4 +34,36 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inicia a observação do elemento do título
   observer.observe(tituloAnimado);
 
+});// ... (Seu código anterior do efeito máquina de escrever e DOMContentLoaded) ...
+
+// A função deve estar disponível globalmente (fora do DOMContentLoaded) 
+// para ser chamada pelo onclick no HTML.
+function toggleLeiaMais() {
+    // 1. Seleciona os elementos necessários
+    const tresPontos = document.getElementById('tresPontos');
+    const mostrarMais = document.getElementById('mostrarMais');
+    const btnLeiaMais = document.getElementById('btnLeiaMais');
+
+    // 2. Lógica de Alternância (Toggle)
+    // Verifica se o texto extra está oculto (display é 'none' ou '')
+    if (mostrarMais.style.display === 'none' || mostrarMais.style.display === '') {
+        // Ação: MUDAR para "Leia Menos" (Expandir)
+        mostrarMais.style.display = 'block'; // Mostra o conteúdo
+        tresPontos.style.display = 'none';   // Esconde os '...'
+        btnLeiaMais.innerHTML = 'Leia Menos'; // Altera o texto do botão
+    } else {
+        // Ação: MUDAR para "Leia Mais" (Recolher)
+        mostrarMais.style.display = 'none';  // Oculta o conteúdo
+        tresPontos.style.display = 'inline'; // Mostra os '...'
+        btnLeiaMais.innerHTML = 'Leia Mais'; // Altera o texto do botão
+    }
+}
+
+// Configuração inicial (Também pode ser feito dentro do DOMContentLoaded, mas funciona bem aqui)
+document.addEventListener('DOMContentLoaded', () => {
+    const mostrarMais = document.getElementById('mostrarMais');
+    // Garante que o estado inicial seja oculto ao carregar
+    if (mostrarMais) {
+        mostrarMais.style.display = 'none'; 
+    }
 });
